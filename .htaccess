@@ -1,0 +1,20 @@
+RewriteEngine On
+RewriteBase /
+
+# Ne pas réécrire l'API
+RewriteRule ^api/ - [L]
+
+# Ne pas réécrire les vrais fichiers ou dossiers
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# React SPA : toutes les autres routes vont vers index.html
+RewriteRule ^ index.html [L]
+
+# Sécurité légère
+Options -Indexes
+
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>

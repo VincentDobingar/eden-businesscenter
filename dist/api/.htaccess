@@ -1,0 +1,12 @@
+RewriteEngine On
+
+Options -Indexes
+
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+AddDefaultCharset UTF-8
+
+# Route propre /api/contact -> contact.php
+RewriteRule ^contact/?$ contact.php [L,QSA]
